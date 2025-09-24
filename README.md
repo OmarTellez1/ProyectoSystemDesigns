@@ -3,6 +3,8 @@ Aplicación web para registrar entradas y salidas del personal, generar reportes
 
 #Instalacion
 Por el momento se necesita tener instalado unicamente php. En el frontend (HTML + CSS + JS) el que realmente ejecuta el código es el navegador asi que no necesitamos instalar nada más.
+En el siguiente enlace seguir los pasos para instalar php dependiendo de su sistema operativo.
+https://www.php.net/manual/es/install.php
 
 ##Estructura
 
