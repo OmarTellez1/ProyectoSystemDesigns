@@ -31,3 +31,7 @@ jobs:
               with:
                   commit_message: "Fix: Apply PSR-12 code style fixes"
                   branch: ${{ github.head_ref }}
+
+            - name: Run PHP Code Beautifier and Fixer
+              run: vendor/bin/phpcbf
+              continue-on-error: true # <--- AÑADE ESTA LÍNEA

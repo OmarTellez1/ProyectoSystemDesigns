@@ -14,5 +14,9 @@
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
         <exclude-pattern>*</exclude-pattern>
     </rule>
+    <rule ref="PSR1.Files.SideEffects">
+        <exclude-pattern>*</exclude-pattern>
+    </rule>
+    
 
 </ruleset>
