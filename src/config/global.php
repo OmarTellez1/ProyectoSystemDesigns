@@ -1,4 +1,5 @@
 <?php
+
 // Requerir el autoload de Composer para poder usar la librería
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -15,4 +16,3 @@ define("DB_PASSWORD", $_ENV['DB_PASSWORD']);
 
 define("DB_ENCODE", "utf8");
 define("PRO_NOMBRE", "Proyecto System Designs");
-?>
