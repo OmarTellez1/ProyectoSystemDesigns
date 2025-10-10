@@ -1,0 +1,25 @@
+{
+    "name": "omartellez1/control-de-asistencias",
+    "description": "Aplicacion de control de asistencias en PHP",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Omartellez1\\ControlDeAsistencias\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Omar",
+            "email": "omartellezse@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
