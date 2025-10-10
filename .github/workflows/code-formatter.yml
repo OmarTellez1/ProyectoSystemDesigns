@@ -4,6 +4,9 @@ on:
     push:
         branches:
             - main # O la rama que estés usando, ej: backend
+permissions:
+    contents: write
+    pull-requests: write
 
 jobs:
     formatting:
