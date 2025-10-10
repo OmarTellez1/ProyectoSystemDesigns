@@ -1,4 +1,5 @@
 <?php
+
 // src/config/global.php
 
 // Ruta corregida para subir dos niveles y encontrar la carpeta vendor
