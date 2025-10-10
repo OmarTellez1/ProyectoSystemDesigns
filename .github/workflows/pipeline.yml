@@ -27,7 +27,7 @@ jobs:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: "8.3"
+                  php-version: "8.2.12"
                   extensions: mysqli
 
             # 1. Instala las dependencias (build)
@@ -36,7 +36,7 @@ jobs:
 
             # 2. Ejecuta el linter para revisar la calidad del código
             - name: Run Linter (PHP Code Sniffer)
-              run: vendor/bin/phpcs --standard=PSR12 .
+              run: vendor/bin/phpcs --standard=PSR12 src tests
 
             # 3. Ejecuta las pruebas automatizadas
             - name: Run Unit Tests (PHPUnit)
