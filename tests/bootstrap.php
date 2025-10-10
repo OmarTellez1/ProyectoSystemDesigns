@@ -1,3 +1,3 @@
 <?php
 
-require_once __DIR__ . '/../config/Conexion.php';
+require_once __DIR__ . '/../src/config/Conexion.php';
