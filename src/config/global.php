@@ -1,4 +1,5 @@
 <?php
+
 // src/config/global.php
 
 // Requerir el autoload de Composer
