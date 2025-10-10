@@ -1,7 +1,7 @@
 <?php
 
 //incluir la conexion de base de datos
-require "../config/Conexion.php";
+require_once __DIR__ . '/../config/Conexion.php';
 class Usuario
 {
     //implementamos nuestro constructor
@@ -10,7 +10,7 @@ class Usuario
     }
 
 
-//metodo insertar regiustro
+    //metodo insertar regiustro
     public function insertar($nombre, $apellidos, $login, $iddepartamento, $idtipousuario, $email, $clavehash, $imagen, $usuariocreado, $codigo_persona)
     {
         date_default_timezone_set('America/Mexico_City');
@@ -24,7 +24,7 @@ class Usuario
     {
         $sql = "UPDATE usuarios SET nombre='$nombre',apellidos='$apellidos',login='$login',iddepartamento='$iddepartamento',idtipousuario='$idtipousuario',email='$email',imagen='$imagen' ,usuariocreado='$usuariocreado',codigo_persona='$codigo_persona'    
 	WHERE idusuario='$idusuario'";
-         return ejecutarConsulta($sql);
+        return ejecutarConsulta($sql);
     }
     public function editar_clave($idusuario, $clavehash)
     {
@@ -48,7 +48,7 @@ class Usuario
     }
 
 
-//metodo para mostrar registros
+    //metodo para mostrar registros
     public function mostrar($idusuario)
     {
         $sql = "SELECT * FROM usuarios WHERE idusuario='$idusuario'";
@@ -56,7 +56,7 @@ class Usuario
     }
 
 
-//listar registros
+    //listar registros
     public function listar()
     {
         $sql = "SELECT * FROM usuarios";
@@ -71,7 +71,7 @@ class Usuario
     }
 
 
-//Función para verificar el acceso al sistema
+    //Función para verificar el acceso al sistema
     public function verificar($login, $clave)
     {
         $sql = "SELECT u.codigo_persona,u.idusuario,u.nombre,u.apellidos,u.login,u.idtipousuario,u.iddepartamento,u.email,u.imagen,u.login, tu.nombre as tipousuario FROM usuarios u INNER JOIN tipousuario tu ON u.idtipousuario=tu.idtipousuario WHERE login='$login' AND password='$clave' AND estado='1'";
