@@ -1,0 +1,131 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Gestión de Usuarios</h2>
+  <button class="btn btn-success" id="btnNuevoUsuario">
+    Crear Nuevo Usuario
+  </button>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Login</th>
+        <th>Email</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaUsuarios">
+      <!-- Las filas de usuarios se insertarán aquí con JavaScript -->
+    </tbody>
+  </table>
+</div>
+
+<!-- Este script se encargará de llenar la tabla -->
+<script src="../js/gestion_usuarios.js"></script>
+// ...existing code...
+<!-- Este script se encargará de llenar la tabla -->
+<script src="../js/gestion_usuarios.js"></script>
+
+<!-- INICIO DEL MODAL PARA NUEVO/EDITAR USUARIO -->
+<div
+  class="modal fade"
+  id="modalUsuario"
+  tabindex="-1"
+  aria-labelledby="modalUsuarioLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalUsuarioLabel">Crear Nuevo Usuario</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario para crear o editar un usuario -->
+        <form id="formularioUsuario">
+          <!-- Campo oculto para el ID del usuario (lo usaremos para editar) -->
+          <input type="hidden" id="idusuario" name="idusuario" />
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="apellidos" class="form-label">Apellidos:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellidos"
+                name="apellidos"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="login" class="form-label">Login (Usuario):</label>
+              <input
+                type="text"
+                class="form-control"
+                id="login"
+                name="login"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+            />
+            <small class="form-text text-muted"
+              >La contraseña es requerida solo al crear un nuevo usuario.</small
+            >
+          </div>
+
+          <!-- Aquí irían los select para Departamento y Tipo de Usuario, los añadiremos después -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="submit" form="formularioUsuario" class="btn btn-primary">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN DEL MODAL -->
