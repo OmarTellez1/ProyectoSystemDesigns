@@ -3,17 +3,15 @@
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.php");
-}else{
-
- 
-require 'header.php';
-require_once('../modelos/Usuario.php');
-  $usuario = new Usuario();
-  $rsptan = $usuario->cantidad_usuario();
-  $reg=$rsptan->fetch_object();
-  $reg->nombre;
-?>
+    header("Location: login.php");
+} else {
+    require 'header.php';
+    require_once('../modelos/Usuario.php');
+    $usuario = new Usuario();
+    $rsptan = $usuario->cantidad_usuario();
+    $reg = $rsptan->fetch_object();
+    $reg->nombre;
+    ?>
     <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -24,8 +22,8 @@ require_once('../modelos/Usuario.php');
       <div class="box">
 <div class="panel-body">
 
-<?php if ($_SESSION['tipousuario']=='Administrador') {
-?>
+    <?php if ($_SESSION['tipousuario'] == 'Administrador') {
+        ?>
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-green">
     
@@ -46,9 +44,9 @@ require_once('../modelos/Usuario.php');
     </a>
   </div>
 </div>
-<?php } ?>
-<?php if ($_SESSION['tipousuario']!='Administrador') {
-?>
+    <?php } ?>
+    <?php if ($_SESSION['tipousuario'] != 'Administrador') {
+        ?>
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-green">
     
@@ -69,12 +67,12 @@ require_once('../modelos/Usuario.php');
     </a>
   </div>
 </div>
-<?php } ?>
+    <?php } ?>
 
 
 
-<?php if ($_SESSION['tipousuario']=='Administrador') {
-?>
+    <?php if ($_SESSION['tipousuario'] == 'Administrador') {
+        ?>
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-orange">
     <div class="inner">
@@ -89,11 +87,11 @@ require_once('../modelos/Usuario.php');
     <a href="usuario.php" class="small-box-footer">Agregar <i class="fa fa-arrow-circle-right"></i></a>
   </div>
 </div>
-<?php } ?>
+    <?php } ?>
 
 
-<?php if ($_SESSION['tipousuario']=='Administrador') {
-?>
+    <?php if ($_SESSION['tipousuario'] == 'Administrador') {
+        ?>
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-aqua">
     
@@ -114,9 +112,9 @@ require_once('../modelos/Usuario.php');
     </a>
   </div>
 </div>
-<?php } ?>
-<?php if ($_SESSION['tipousuario']!='Administrador') {
-?>
+    <?php } ?>
+    <?php if ($_SESSION['tipousuario'] != 'Administrador') {
+        ?>
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-aqua">
     
@@ -137,7 +135,7 @@ require_once('../modelos/Usuario.php');
     </a>
   </div>
 </div>
-<?php } ?>
+    <?php } ?>
 <!--fin centro-->
       </div>
       </div>
@@ -148,8 +146,8 @@ require_once('../modelos/Usuario.php');
     <!-- /.content -->
   </div>
 
-<?php
-require 'footer.php'; 
+    <?php
+    require 'footer.php';
 }
 ob_end_flush();
 ?>

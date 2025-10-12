@@ -1,13 +1,12 @@
-<?php 
+<?php
 //activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.html");
-}else{
-
-require 'header.php';
- ?>
+    header("Location: login.html");
+} else {
+    require 'header.php';
+    ?>
     <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -57,13 +56,13 @@ require 'header.php';
     </section>
     <!-- /.content -->
   </div>
-<?php 
+    <?php
 
-require 'footer.php';
- ?>
+    require 'footer.php';
+    ?>
  <script src="scripts/asistencia.js"></script>
- <?php 
+    <?php
 }
 
 ob_end_flush();
-  ?>
+?>
