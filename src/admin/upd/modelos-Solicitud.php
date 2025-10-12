@@ -2,14 +2,14 @@
 
 //incluir la conexion de base de datos
 require "../config/Conexion.php";
-class solicitud
+class Solicitud
 {
     //implementamos nuestro constructor
     public function __construct()
     {
     }
 
-//metodo insertar registro
+    //metodo insertar registro
     public function insertar($iddestino, $idusuario, $fecha_hora, $numcon, $idarticulo, $cantidad)
     {
 
@@ -18,9 +18,9 @@ class solicitud
 
         $sql = "INSERT INTO solicitud (iddestino,idusuario,num_comprobante,fecha_hora,estado) VALUES ('$iddestino','$idusuario','$numcon','$fechacreada','Pendiente')";
 
-         $idingresonew = ejecutarConsulta_retornarID($sql);
-         $num_elementos = 0;
-         $sw = true;
+        $idingresonew = ejecutarConsulta_retornarID($sql);
+        $num_elementos = 0;
+        $sw = true;
 
 
         while ($num_elementos < count($idarticulo)) {
@@ -105,7 +105,7 @@ class solicitud
 
 
 
-//metodo para mostrar registros
+    //metodo para mostrar registros
     public function mostrar($idsolicitud)
     {
 
@@ -119,7 +119,7 @@ class solicitud
         return ejecutarConsulta($sql);
     }
 
-//listar registros
+    //listar registros
     public function listar()
     {
         $sql = "SELECT a.idsolicitud, b.nombre as iddestino, c.nombre as idusuario, a.num_comprobante as num_comprobante, a.fecha_hora as fecha_hora, a.estado as estado  FROM `solicitud` a  Inner join destinos b Inner join usuarios c where a.iddestino = b.iddestino and a.idusuario=c.idusuario  ORDER BY a.num_comprobante DESC";
