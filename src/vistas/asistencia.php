@@ -22,7 +22,7 @@
 
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
-<?php 
+<?php
  //include '../ajax/asistencia.php' ?>
     <div name="movimientos" id="movimientos">
     </div> 

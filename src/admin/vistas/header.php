@@ -1,7 +1,8 @@
- <?php 
-if (strlen(session_id())<1) 
-  session_start();
-  ?>
+ <?php
+ if (strlen(session_id()) < 1) {
+     session_start();
+ }
+    ?>
  <!DOCTYPE html>
 <html>
   <head>
@@ -74,7 +75,7 @@ if (strlen(session_id())<1)
                 <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $_SESSION['nombre'].' '.$_SESSION['departamento']; ?>
+                  <?php echo $_SESSION['nombre'] . ' ' . $_SESSION['departamento']; ?>
                   <small>Desarrollo de sistemas informáticos</small>
                 </p>
               </li>
@@ -130,8 +131,8 @@ if (strlen(session_id())<1)
       </li>
 
 -->
-<?php if ($_SESSION['tipousuario']=='Administrador') {
-?>
+<?php if ($_SESSION['tipousuario'] == 'Administrador') {
+    ?>
       <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Acceso</span>
@@ -172,8 +173,8 @@ if (strlen(session_id())<1)
           </ul>
       </li>
 <?php } ?>
-<?php if ($_SESSION['tipousuario']!='Administrador') {
-?>
+<?php if ($_SESSION['tipousuario'] != 'Administrador') {
+    ?>
           <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Mis Asistencias</span>

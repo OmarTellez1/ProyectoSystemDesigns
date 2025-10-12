@@ -1,4 +1,5 @@
 <?php
+
 // src/admin/config/global.php
 
 // Requerir el autoload de Composer para poder usar las librerías
