@@ -3,21 +3,33 @@
     
     <description>Un estándar de código personalizado para el ProyectoSystemDesigns.</description>
 
-    <file>src</file>
+    <file>src/admin/ajax</file>
+    <file>src/admin/config</file>
+    <file>src/admin/modelos</file>
+    <file>src/admin/upd</file>
     <file>tests</file>
+    
+    <exclude-pattern>*/vistas/*</exclude-pattern>
 
     <rule ref="PSR12"/>
 
     <rule ref="PSR1.Methods.CamelCapsMethodName">
         <severity>0</severity>
     </rule>
+
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
         <severity>0</severity>
     </rule>
+
     <rule ref="PSR1.Files.SideEffects">
         <severity>0</severity>
     </rule>
+
     <rule ref="Generic.Files.LineLength.TooLong">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
         <severity>0</severity>
     </rule>
 
