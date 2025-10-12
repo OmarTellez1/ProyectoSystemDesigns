@@ -1,55 +1,55 @@
 name: PHP CI Pipeline
 
 on:
-    push:
-        branches:
-            - main # O la rama que estés usando, ej: backend
+  push:
+    branches:
+      - backend1 # O la rama que estés usando, ej: backend
 
 permissions:
-    contents: write # Esencial para que el bot pueda hacer commit
+  contents: write # Esencial para que el bot pueda hacer commit
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        services:
-            mysql:
-                image: mysql:8.0
-                env:
-                    MYSQL_ROOT_PASSWORD: root
-                    MYSQL_DATABASE: control_asistencia
-                ports:
-                    - 3306:3306
-                options: >-
-                    --health-cmd="mysqladmin ping -h localhost"
-                    --health-interval=10s --health-timeout=5s --health-retries=5
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: control_asistencia
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=10s --health-timeout=5s --health-retries=5
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "8.2"
-                  extensions: mysqli
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mysqli
 
-            - name: Install Dependencies
-              run: composer install
+      - name: Install Dependencies
+        run: composer install
 
-            # ---- PASO DE AUTO-FORMATEO ----
-            - name: Auto-fix code style issues
-              run: vendor/bin/phpcbf
-              continue-on-error: true # Continúa incluso si no puede arreglar todo
+      # ---- PASO DE AUTO-FORMATEO ----
+      - name: Auto-fix code style issues
+        run: vendor/bin/phpcbf
+        continue-on-error: true # Continúa incluso si no puede arreglar todo
 
-            - name: Commit automatically fixed code
-              uses: stefanzweifel/git-auto-commit-action@v5
-              with:
-                  commit_message: "Chore: Apply automated code style fixes"
+      - name: Commit automatically fixed code
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Chore: Apply automated code style fixes"
 
-            # ---- PASOS DE VERIFICACIÓN ----
-            - name: Run Linter (PHP Code Sniffer)
-              run: vendor/bin/phpcs
+      # ---- PASOS DE VERIFICACIÓN ----
+      - name: Run Linter (PHP Code Sniffer)
+        run: vendor/bin/phpcs
 
-            - name: Run Unit Tests (PHPUnit)
-              run: vendor/bin/phpunit
+      - name: Run Unit Tests (PHPUnit)
+        run: vendor/bin/phpunit
