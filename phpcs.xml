@@ -16,20 +16,17 @@
     <rule ref="PSR1.Methods.CamelCapsMethodName">
         <severity>0</severity>
     </rule>
-
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
         <severity>0</severity>
     </rule>
-
     <rule ref="PSR1.Files.SideEffects">
         <severity>0</severity>
     </rule>
-
     <rule ref="Generic.Files.LineLength.TooLong">
         <severity>0</severity>
     </rule>
 
-    <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
+    <rule ref="PSR1.Classes.ClassDeclaration.CaseSensitive">
         <severity>0</severity>
     </rule>
 
