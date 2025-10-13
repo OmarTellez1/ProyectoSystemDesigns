@@ -1,4 +1,5 @@
 <?php
+
 // tests/bootstrap.php
 
 // RUTA CORREGIDA para la nueva estructura de la rama
