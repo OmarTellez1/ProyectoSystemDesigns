@@ -153,7 +153,7 @@ switch ($_GET["op"]) {
         //Destruìmos la sesión
         session_destroy();
         //Redireccionamos al login
-        header("Location: ../vistas/login.html");
+        header("Location: /vistas/login.html");
         exit();
 
 }
