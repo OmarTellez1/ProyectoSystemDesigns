@@ -141,10 +141,12 @@ switch ($_GET["op"]) {
     case 'salir':
 
         require_once __DIR__ . "/../config/Conexion.php";
-        $id = $_SESSION['idusuario'];
-        $sql = "UPDATE usuarios SET iteracion='0' WHERE idusuario='$id'";
-        //echo $sql;
-        ejecutarConsulta($sql);
+        if (isset($_SESSION['idusuario'])) {
+            $id = $_SESSION['idusuario'];
+            $sql = "UPDATE usuarios SET iteracion='0' WHERE idusuario='$id'";
+            // 3. Eliminamos el "echo" que rompía la redirección
+            ejecutarConsulta($sql);
+        }
 
 
         //Limpiamos las variables de sesión
@@ -152,7 +154,7 @@ switch ($_GET["op"]) {
         //Destruìmos la sesión
         session_destroy();
         //Redireccionamos al login
-        header("Location: ../index.php");
+        header("Location: ../vistas/login.html");
+        exit();
 
-        break;
 }
