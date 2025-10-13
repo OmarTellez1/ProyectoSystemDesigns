@@ -9,14 +9,7 @@ https://www.php.net/manual/es/install.php
 ##Estructura
 
 - 'docs': entrega parciales
-- 'frontend': HTML, CSS y Javascript.
-- 'backend': php
+- 'src': Aqui se encuentra el proyecto
 - 'tests': pruebas automatizadas
 - '.github': Configuración de CI/CD
 - 'composer.json': Composer es el manejador de dependencias de PHP
-
-##Equipo
--Omar Enrique Téllez Sanabria: backend
--Cristopher Alexis Granja Astudillo: Pruebas y CI/CD
--Julio César Astudillo Bustamante: UX/UI
--Kevin Eduardo Valverde mullo: frontend
