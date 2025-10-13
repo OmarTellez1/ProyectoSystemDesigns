@@ -139,7 +139,6 @@ switch ($_GET["op"]) {
         break;
 
     case 'salir':
-
         require_once __DIR__ . "/../config/Conexion.php";
         $id = $_SESSION['idusuario'];
         $sql = "UPDATE usuarios SET iteracion='0' WHERE idusuario='$id'";
