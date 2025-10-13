@@ -64,6 +64,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        # Añadimos un paso para instalar la Heroku CLI manualmente
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
