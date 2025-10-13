@@ -139,7 +139,6 @@ switch ($_GET["op"]) {
         break;
 
     case 'salir':
-
         require_once __DIR__ . "/../config/Conexion.php";
         if (isset($_SESSION['idusuario'])) {
             $id = $_SESSION['idusuario'];
