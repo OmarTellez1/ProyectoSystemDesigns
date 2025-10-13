@@ -4,8 +4,8 @@
 
 use PHPUnit\Framework\TestCase;
 
-// Ruta corregida para apuntar a la carpeta src
-require_once __DIR__ . '/../src/modelos/Usuario.php';
+// RUTA CORREGIDA para la nueva estructura de la rama
+require_once __DIR__ . '/../src/admin/modelos/Usuario.php';
 
 class UsuarioTest extends TestCase
 {
