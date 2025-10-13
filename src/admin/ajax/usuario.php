@@ -90,14 +90,15 @@ switch ($_GET["op"]) {
                 "5" => "<img src='../files/usuarios/" . $reg->imagen . "' height='50px' width='50px'>",
                 "6" => $reg->fechacreado,
                 "7" => ($reg->estado) ? '<span class="label bg-green">Activado</span>' : '<span class="label bg-red">Desactivado</span>'
-                );
+            );
         }
 
         $results = array(
-             "sEcho" => 1,//info para datatables
-             "iTotalRecords" => count($data),//enviamos el total de registros al datatable
-             "iTotalDisplayRecords" => count($data),//enviamos el total de registros a visualizar
-             "aaData" => $data);
+            "sEcho" => 1,//info para datatables
+            "iTotalRecords" => count($data),//enviamos el total de registros al datatable
+            "iTotalDisplayRecords" => count($data),//enviamos el total de registros a visualizar
+            "aaData" => $data
+        );
         echo json_encode($results);
 
         break;
@@ -138,10 +139,12 @@ switch ($_GET["op"]) {
         break;
 
     case 'salir':
-            $id = $_SESSION['idusuario'];
-            $sql = "UPDATE usuarios SET iteracion='0' WHERE idusuario='$id'";
-            echo $sql;
-            ejecutarConsulta($sql);
+
+        require_once __DIR__ . "/../config/Conexion.php";
+        $id = $_SESSION['idusuario'];
+        $sql = "UPDATE usuarios SET iteracion='0' WHERE idusuario='$id'";
+        //echo $sql;
+        ejecutarConsulta($sql);
 
 
         //Limpiamos las variables de sesión
