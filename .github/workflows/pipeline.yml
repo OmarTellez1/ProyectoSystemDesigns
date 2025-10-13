@@ -50,7 +50,7 @@ jobs:
         with:
           commit_message: "Chore: Apply automated code style fixes"
 
-      # ---- PASOS DE VERIFICACIÓN ----
+      # ---- PASOS DE VERIFICACIÓN sss ----
       - name: Run Linter (PHP Code Sniffer)
         run: vendor/bin/phpcs
 
