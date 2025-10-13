@@ -27,7 +27,7 @@ if (!isset($_SESSION['nombre'])) {
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-green">
     
-    <a href="asistencia.php" class="small-box-footer">
+    <!--<a href="asistencia.php" class="small-box-footer">-->
     <div class="inner">
       <h5 style="font-size: 20px;">
         <strong>Lista asistencias </strong>
@@ -50,7 +50,7 @@ if (!isset($_SESSION['nombre'])) {
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-green">
     
-    <a href="asistenciau.php" class="small-box-footer">
+    <!--<a href="asistenciau.php" class="small-box-footer">-->
     <div class="inner">
       <h5 style="font-size: 20px;">
         <strong>Mi lista asistencias </strong>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['nombre'])) {
 
     <?php if ($_SESSION['tipousuario'] == 'Administrador') {
         ?>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-aqua">
     
     <a href="rptasistencia.php" class="small-box-footer">
@@ -111,14 +111,14 @@ if (!isset($_SESSION['nombre'])) {
 
     </a>
   </div>
-</div>
+</div>-->
     <?php } ?>
     <?php if ($_SESSION['tipousuario'] != 'Administrador') {
         ?>
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
   <div class="small-box bg-aqua">
     
-    <a href="rptasistenciau.php" class="small-box-footer">
+    <!--<a href="rptasistenciau.php" class="small-box-footer">-->
     <div class="inner">
       <h5 style="font-size: 20px;">
         <strong>Mi reporte de asistencias </strong>

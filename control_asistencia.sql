@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-02-2020 a las 01:18:04
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Tiempo de generación: 13-10-2025 a las 06:03:19
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `asistencia` (
   `idasistencia` int(11) NOT NULL,
-  `codigo_persona` varchar(20) COLLATE utf8_bin NOT NULL,
+  `codigo_persona` varchar(20) NOT NULL,
   `fecha_hora` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `tipo` varchar(45) COLLATE utf8_bin NOT NULL,
+  `tipo` varchar(45) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -41,26 +40,9 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`idasistencia`, `codigo_persona`, `fecha_hora`, `tipo`, `fecha`) VALUES
-(112, '444', '2020-02-01 03:01:00', 'Entrada', '2020-01-31'),
-(113, '789', '2020-02-01 03:01:03', 'Entrada', '2020-01-31'),
-(114, '789', '2020-02-01 03:01:06', 'Salida', '2020-01-31'),
-(115, '444', '2020-02-01 03:01:08', 'Salida', '2020-01-31'),
-(116, '444', '2020-02-01 03:01:28', 'Entrada', '2020-01-31'),
-(117, '789', '2020-02-01 03:01:43', 'Entrada', '2020-01-31'),
-(118, '444', '2020-02-01 03:06:12', 'Salida', '2020-01-31'),
-(119, '444', '2020-02-01 03:06:17', 'Entrada', '2020-01-31'),
-(120, '789', '2020-02-01 03:08:33', 'Salida', '2020-01-31'),
-(121, '789', '2020-02-01 03:08:38', 'Entrada', '2020-01-31'),
-(122, '444', '2020-02-01 03:08:44', 'Salida', '2020-01-31'),
-(123, '444', '2020-02-01 03:08:49', 'Entrada', '2020-01-31'),
-(124, '8VwqyL', '2020-02-01 03:22:02', 'Entrada', '2020-01-31'),
-(125, '8VwqyL', '2020-02-01 03:22:04', 'Salida', '2020-01-31'),
-(126, '8VwqyL', '2020-02-01 03:22:07', 'Entrada', '2020-01-31'),
-(127, '8VwqyL', '2020-02-01 03:22:11', 'Salida', '2020-01-31'),
-(128, '444', '2020-02-03 00:15:42', 'Salida', '2020-02-02'),
-(129, '444', '2020-02-03 00:15:47', 'Entrada', '2020-02-02'),
-(130, '789', '2020-02-03 00:15:54', 'Salida', '2020-02-02'),
-(131, '789', '2020-02-03 00:16:00', 'Entrada', '2020-02-02');
+(134, '123e', '2025-09-25 02:15:48', 'Entrada', '2025-09-24'),
+(135, '8VwqyL', '2025-10-07 02:07:26', 'Entrada', '2025-10-06'),
+(136, 'hola1', '2025-10-07 02:12:33', 'Entrada', '2025-10-06');
 
 -- --------------------------------------------------------
 
@@ -70,10 +52,10 @@ INSERT INTO `asistencia` (`idasistencia`, `codigo_persona`, `fecha_hora`, `tipo`
 
 CREATE TABLE `departamento` (
   `iddepartamento` int(11) NOT NULL,
-  `nombre` varchar(45) COLLATE utf8_bin NOT NULL,
-  `descripcion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
   `fechacreada` datetime NOT NULL,
-  `idusuario` varchar(45) COLLATE utf8_bin NOT NULL
+  `idusuario` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -81,13 +63,13 @@ CREATE TABLE `departamento` (
 --
 
 INSERT INTO `departamento` (`iddepartamento`, `nombre`, `descripcion`, `fechacreada`, `idusuario`) VALUES
-(1, 'Analista de créditos', 'asesor de ventas', '2020-01-18 00:00:00', '1'),
-(2, 'Promotor de ahorro y crédito', 'trabajo de promoción', '2020-01-19 00:15:24', '1'),
-(3, 'Gerencia', 'representante legal', '2020-01-28 21:24:52', '1'),
-(4, 'Administración', 'encargado de agencia', '2020-01-28 21:25:08', '1'),
-(5, 'Recibidor(a)/Pagador(a)', 'encargado de los movimientos de caja', '2020-01-28 21:25:45', '1'),
-(6, 'Vigilancia', 'vigilante diurno', '2020-01-28 21:26:14', '1'),
-(7, 'Limpieza', 'encargado de la limpieza de oficinas', '2020-01-28 21:26:50', '1');
+(1, 'Analista de créditos', 'asesor de ventas', '2025-10-05 00:00:00', '1'),
+(2, 'Promotor de ahorro y crédito', 'trabajo de promoción', '2025-10-05 00:15:24', '1'),
+(3, 'Gerencia', 'representante legal', '2025-10-05 21:24:52', '1'),
+(4, 'Administración', 'encargado de agencia', '2025-10-05 21:25:08', '1'),
+(5, 'Recibidor(a)/Pagador(a)', 'encargado de los movimientos de caja', '2025-10-05 21:25:45', '1'),
+(6, 'Vigilancia', 'vigilante diurno', '2025-10-05 21:26:14', '1'),
+(7, 'Limpieza', 'encargado de la limpieza de oficinas', '2025-10-05 21:26:50', '1');
 
 -- --------------------------------------------------------
 
@@ -98,7 +80,7 @@ INSERT INTO `departamento` (`iddepartamento`, `nombre`, `descripcion`, `fechacre
 CREATE TABLE `mensajes` (
   `idmensaje` int(11) NOT NULL,
   `idusuariomensaje` int(11) NOT NULL,
-  `textomensaje` text COLLATE utf8_bin NOT NULL,
+  `textomensaje` text NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
   `fechamensaje` datetime NOT NULL,
   `fechacreada` datetime NOT NULL,
@@ -110,7 +92,7 @@ CREATE TABLE `mensajes` (
 --
 
 INSERT INTO `mensajes` (`idmensaje`, `idusuariomensaje`, `textomensaje`, `estado`, `fechamensaje`, `fechacreada`, `idusuario`) VALUES
-(2, 1, 'hola, esto es un mensaje de prueba del sistema de usuarios', 1, '2020-01-18 00:00:00', '2020-01-18 00:00:00', 1);
+(2, 1, 'hola, esto es un mensaje de prueba del sistema de usuarios', 1, '2025-10-01 00:00:00', '2025-10-01 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -120,10 +102,10 @@ INSERT INTO `mensajes` (`idmensaje`, `idusuariomensaje`, `textomensaje`, `estado
 
 CREATE TABLE `tipousuario` (
   `idtipousuario` int(11) NOT NULL,
-  `nombre` varchar(45) COLLATE utf8_bin NOT NULL,
-  `descripcion` varchar(45) COLLATE utf8_bin NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
   `fechacreada` datetime NOT NULL,
-  `idusuario` varchar(45) COLLATE utf8_bin NOT NULL
+  `idusuario` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -131,8 +113,8 @@ CREATE TABLE `tipousuario` (
 --
 
 INSERT INTO `tipousuario` (`idtipousuario`, `nombre`, `descripcion`, `fechacreada`, `idusuario`) VALUES
-(1, 'Administrador', 'Con priviliegios de gestionar todo el sistema', '2020-01-18 00:00:00', '1'),
-(2, 'Vendedor', 'vende y promueve los productos', '2020-01-19 00:30:13', 'admin');
+(1, 'Administrador', 'Con priviliegios de gestionar todo el sistema', '2025-09-30 00:00:00', '1'),
+(2, 'Vendedor', 'vende y promueve los productos', '2025-09-30 00:30:13', 'admin');
 
 -- --------------------------------------------------------
 
@@ -142,18 +124,18 @@ INSERT INTO `tipousuario` (`idtipousuario`, `nombre`, `descripcion`, `fechacread
 
 CREATE TABLE `usuarios` (
   `idusuario` int(11) NOT NULL,
-  `nombre` varchar(45) COLLATE utf8_bin NOT NULL,
-  `apellidos` varchar(45) COLLATE utf8_bin NOT NULL,
-  `login` varchar(45) COLLATE utf8_bin NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `apellidos` varchar(45) NOT NULL,
+  `login` varchar(45) NOT NULL,
   `iddepartamento` int(11) NOT NULL,
   `idtipousuario` int(11) NOT NULL,
-  `email` varchar(45) COLLATE utf8_bin NOT NULL,
-  `password` varchar(64) COLLATE utf8_bin NOT NULL,
-  `imagen` varchar(50) COLLATE utf8_bin NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `imagen` varchar(50) NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
   `fechacreado` datetime NOT NULL,
-  `usuariocreado` varchar(45) COLLATE utf8_bin NOT NULL,
-  `codigo_persona` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `usuariocreado` varchar(45) NOT NULL,
+  `codigo_persona` varchar(20) DEFAULT NULL,
   `idmensaje` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -162,10 +144,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idusuario`, `nombre`, `apellidos`, `login`, `iddepartamento`, `idtipousuario`, `email`, `password`, `imagen`, `estado`, `fechacreado`, `usuariocreado`, `codigo_persona`, `idmensaje`) VALUES
-(1, 'admin', 'compartiendocodigos', 'admin', 1, 1, 'info@compartiendocodigos.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'default.jpg', 1, '2020-01-18 00:00:00', 'admin', '444', 1),
-(2, 'JUAN', 'Lopez Torres', 'juan', 1, 2, 'juan@gmail.com', 'ed08c290d7e22f7bb324b15cbadce35b0b348564fd2d5f95752388d86d71bcca', '1579406789.jpg', 1, '2020-01-18 22:06:29', '0', '789', 0),
-(11, 'Angel', 'totocayo', 'pepe', 1, 2, 'angelinos257@gmail.com', '7c9e7c1494b2684ab7c19d6aff737e460fa9e98d5a234da1310c97ddf5691834', '1579408503.jpg', 1, '2020-01-18 22:35:03', 'Angel', '8VwqyL', 0),
-(14, 'Pedro', 'totocayo', 'coco', 2, 2, 'angelinos257@gmail.com', '4f682b71153ffa91e608445d7ea1257e2076d0d95eab6336cd1aa94b49680f11', '1579415808.jpg', 1, '2020-01-19 00:36:47', 'admin', NULL, 0);
+(1, 'admin', 'valverde', 'admin', 1, 1, 'kevalverde@est.ecotec.edu.ec', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'default.jpg', 1, '2025-09-30 00:00:00', 'admin', '444', 1),
+(15, 'kevin', 'valverde', 'kevin', 3, 2, 'kevalverde@est.ecotec.edu.ec', 'b221d9dbb083a7f33428d7c2a3c3198ae925614d70210e28716ccaa7cd4ddb79', '', 1, '2025-09-03 18:36:52', 'kevin', 'hola', 0),
+(18, 'felipe', 'garzon', 'felipe', 6, 2, 'kevve@hotmal.com', '8761bc707d28b114733653f5255e8d13ab8868925176ad2c0942231fa311e30a', '', 1, '2025-09-24 20:14:05', 'felipe', '123e', 0),
+(19, 'carlos', 'cujilema', 'carlos', 6, 2, 'carlos@hotmal.com', 'ec216fb204db213fecf8a4a72363a84fc97d5d1e3ec362eaf42a69ce6a025e16', '', 1, '2025-10-06 20:11:42', 'carlos', 'hola1', 0),
+(20, 'santi', 'mullo', 'santi', 7, 2, 'kevve@hotmal.com', 'e633f4fc79badea1dc5db970cf397c8248bac47cc3acf9915ba60b5d76b0e88f', '1760322658.jpg', 1, '2025-10-12 20:30:58', 'santi', '1345', 0),
+(21, 'camila', 'gonzales', 'camila', 6, 2, 'camila@gmail.com', '489ca219174f91b48313c188f4c998a5413fcaf194a93fd8e24bbdb178dc8f3a', '1760327897.jpg', 1, '2025-10-12 21:58:17', 'camila', 'Hola', 0);
 
 --
 -- Índices para tablas volcadas
@@ -214,7 +198,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `idasistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `idasistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT de la tabla `departamento`
@@ -238,7 +222,7 @@ ALTER TABLE `tipousuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restricciones para tablas volcadas
