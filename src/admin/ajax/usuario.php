@@ -155,5 +155,4 @@ switch ($_GET["op"]) {
         //Redireccionamos al login
         header("Location: ../vistas/login.html");
         exit();
-
 }
