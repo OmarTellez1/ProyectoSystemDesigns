@@ -143,7 +143,7 @@ switch ($_GET["op"]) {
         if (isset($_SESSION['idusuario'])) {
             $id = $_SESSION['idusuario'];
             $sql = "UPDATE usuarios SET iteracion='0' WHERE idusuario='$id'";
-            // 3. Eliminamos el "echo" que rompía la redirección
+
             ejecutarConsulta($sql);
         }
 
@@ -153,6 +153,6 @@ switch ($_GET["op"]) {
         //Destruìmos la sesión
         session_destroy();
         //Redireccionamos al login
-        header("Location: /vistas/login.html");
+        header("Location: ../vistas/login.html");
         exit();
 }
