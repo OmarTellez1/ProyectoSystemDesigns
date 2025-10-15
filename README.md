@@ -14,3 +14,4 @@ https://www.php.net/manual/es/install.php
 - '.github': Configuración de CI/CD
 - 'composer.json': Composer es el gestor de archivos de dependencias de PHP
 - '.env.example' : Ejemplo de como debe ir el .env original
+  Este proyecto cuenta con github secrets
