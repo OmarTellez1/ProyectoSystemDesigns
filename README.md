@@ -12,4 +12,5 @@ https://www.php.net/manual/es/install.php
 - 'src': Aqui se encuentra el proyecto
 - 'tests': pruebas automatizadas
 - '.github': Configuración de CI/CD
-- 'composer.json': Composer es el manejador de dependencias de PHP
+- 'composer.json': Composer es el gestor de archivos de dependencias de PHP
+- '.env.example' : Ejemplo de como debe ir el .env original
