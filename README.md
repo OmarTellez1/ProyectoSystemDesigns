@@ -8,6 +8,7 @@ Sigue los pasos oficiales según tu sistema operativo:
 https://www.php.net/manual/es/install.php
 
 # Estructura del Proyecto
+```text
 ProyectoSystemDesigns/
 │
 ├── docs/          # Entregas parciales y documentación
@@ -16,10 +17,10 @@ ProyectoSystemDesigns/
 ├── .github/       # Configuración de CI/CD
 ├── composer.json  # Dependencias de PHP (Composer)
 └── README.md      # Este archivo
-
+```
 # Tecnologías Utilizadas
-Backend: PHP
-Frontend: HTML5, CSS3, JavaScript
-Dependencias: Composer
-Generación de PDFs: Librerías PHP (ej. dompdf)
-Control de versiones: Git / GitHub
+- **Backend** : PHP
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Dependencias**: Composer
+- **Generación de PDFs**: Librerías PHP
+- **Control de versiones**: Git / GitHub
