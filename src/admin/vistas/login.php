@@ -22,7 +22,7 @@
     <?php require '../config/Conexion.php'; ?>
     <div class="login-box">
       <div class="login-logo">
-       <a href="login.php"><b>CC</b> Admin</a>
+       <a href="login.php"><b>Primero</b> Tu</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Ingrese sus datos de Acceso</p>

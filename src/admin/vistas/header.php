@@ -119,17 +119,8 @@
       <li><a href="escritorio.php"><i class="fa  fa-dashboard (alias)"></i> <span>Escritorio</span></a></li>
 
 
-      <li class="treeview">
-          <a href="#">
-            <i class="fa fa-envelope"></i> <span>Mensajes</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="mensaje.php"><i class="fa fa-circle-o"></i> Mensaje</a></li>
-          </ul>
-      </li>
+
+
 
 
 <?php if ($_SESSION['tipousuario'] == 'Administrador') {
@@ -144,7 +135,7 @@
           <ul class="treeview-menu">
             <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
             <li><a href="tipousuario.php"><i class="fa fa-circle-o"></i> Tipo Usuario</a></li>
-            <li><a href="departamento.php"><i class="fa fa-circle-o"></i> Departamento</a></li> 
+            <!--<li><a href="departamento.php"><i class="fa fa-circle-o"></i> Departamento</a></li> -->
           </ul>
       </li>
 
