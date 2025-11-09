@@ -7,7 +7,7 @@ if (strlen(session_id())<1)
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>CC | Admin</title>
+   <title>Primero | Tu</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3 -->
@@ -49,9 +49,9 @@ if (strlen(session_id())<1)
     <!-- Logo -->
     <a href="escritorio.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>CC</b> A</span>
+      <span class="logo-mini"><b>PR</b> T</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>CC</b> ADMIN</span>
+      <span class="logo-lg"><b>Primero</b> Tu</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -116,7 +116,7 @@ if (strlen(session_id())<1)
 
       <li><a href="escritorio.php"><i class="fa  fa-dashboard (alias)"></i> <span>Escritorio</span></a></li>
 
-<!--
+
       <li class="treeview">
           <a href="#">
             <i class="fa fa-envelope"></i> <span>Mensajes</span>
@@ -129,7 +129,7 @@ if (strlen(session_id())<1)
           </ul>
       </li>
 
--->
+
       <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Acceso</span>
@@ -172,9 +172,6 @@ if (strlen(session_id())<1)
 
 
   
-      <li><a href="#"><i class="fa fa-question-circle"></i> <span>Ayuda</span><small class="label pull-right bg-yellow">PDF</small></a></li>
-      <li><a href="https://www.compartiendocodigos.net/"><i class="fa  fa-exclamation-circle"></i> <span>Acerca de</span><small class="label pull-right bg-yellow">ComCod</small></a></li>   
-        
       </ul>
     </section>
     <!-- /.sidebar -->
