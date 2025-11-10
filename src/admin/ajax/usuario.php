@@ -152,4 +152,21 @@ switch ($_GET["op"]) {
         header("Location: ../index.php");
 
         break;
+
+    case 'selectUsuarios':
+        // Retornar usuarios activos con info básica para selects (JSON)
+        require "../config/Conexion.php";
+        $sql = "SELECT idusuario, nombre, apellidos, iddepartamento FROM usuarios WHERE estado='1'";
+        $rspta = ejecutarConsulta($sql);
+        $usuarios = array();
+        while ($reg = $rspta->fetch_object()) {
+            $usuarios[] = array(
+                'idusuario' => $reg->idusuario,
+                'nombre' => $reg->nombre,
+                'apellidos' => $reg->apellidos,
+                'iddepartamento' => $reg->iddepartamento
+            );
+        }
+        echo json_encode($usuarios);
+        break;
 }

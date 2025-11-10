@@ -3,7 +3,7 @@ name: PHP CI Pipeline
 on:
   push:
     branches:
-      - backend1 # O la rama que estés usando, ej: backend
+      - frontend # O la rama que estés usando, ej: backend
 
 permissions:
   contents: write # Esencial para que el bot pueda hacer commit
