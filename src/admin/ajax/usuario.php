@@ -152,7 +152,7 @@ switch ($_GET["op"]) {
         header("Location: ../index.php");
 
         break;
-    
+
     case 'selectUsuarios':
         // Retornar usuarios activos con info básica para selects (JSON)
         require "../config/Conexion.php";
