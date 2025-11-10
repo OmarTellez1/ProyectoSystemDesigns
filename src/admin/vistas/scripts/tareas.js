@@ -83,33 +83,46 @@ document.addEventListener('DOMContentLoaded', function () {
         renderUserOptions();
     });
 
-    // Form submit (UI-only): show JSON summary
+    // Form submit: persist tarea via AJAX
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         const titulo = document.getElementById('titulo').value.trim();
         const descripcion = document.getElementById('descripcion').value.trim();
+        const fecha_vencimiento = document.getElementById('fecha_vencimiento').value || '';
         if (!titulo || !descripcion) {
-            alert('Título y descripción son obligatorios (máx 50 caracteres).');
+            bootbox.alert('Título y descripción son obligatorios (máx 50 caracteres).');
             return;
         }
         if (titulo.length > 50 || descripcion.length > 50) {
-            alert('El título o la descripción exceden 50 caracteres.');
+            bootbox.alert('El título o la descripción exceden 50 caracteres.');
             return;
         }
 
-        const payload = {
-            titulo,
-            descripcion,
-            asignados: asignados.map(a => ({idusuario: a.idusuario, nombre: a.nombre, apellidos: a.apellidos, iddepartamento: a.iddepartamento}))
-        };
+        const assignedIds = asignados.map(a => a.idusuario);
 
-        // UI-only: show summary
-        alert('Tarea (UI-only) creada:\n' + JSON.stringify(payload, null, 2));
-        // Optionally clear form
-        form.reset();
-        asignados = [];
-        renderUserOptions();
-        renderAsignados();
+        const formData = new FormData();
+        formData.append('titulo', titulo);
+        formData.append('descripcion', descripcion);
+        formData.append('fecha_vencimiento', fecha_vencimiento);
+        formData.append('asignados', JSON.stringify(assignedIds));
+
+        fetch('../ajax/tarea.php?op=guardaryeditar', {
+            method: 'POST',
+            body: formData
+        }).then(r => r.json()).then(resp => {
+            if (resp.success) {
+                bootbox.alert(resp.message);
+                form.reset();
+                asignados = [];
+                renderUserOptions();
+                renderAsignados();
+            } else {
+                bootbox.alert(resp.message || 'Error al crear la tarea');
+            }
+        }).catch(err => {
+            console.error(err);
+            bootbox.alert('Error de red al comunicarse con el servidor');
+        });
     });
 
     // initial load

@@ -32,6 +32,10 @@ if (!isset($_SESSION['nombre'])) {
       <label for="descripcion">Descripción (*):</label>
       <input class="form-control" type="text" name="descripcion" id="descripcion" maxlength="50" placeholder="Breve descripción" required>
     </div>
+    <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="fecha_vencimiento">Fecha límite:</label>
+      <input class="form-control" type="date" name="fecha_vencimiento" id="fecha_vencimiento" placeholder="YYYY-MM-DD">
+    </div>
 
     <div class="form-group col-lg-4 col-md-4 col-xs-12">
       <label for="filtro_departamento">Filtrar por Departamento:</label>
@@ -54,7 +58,7 @@ if (!isset($_SESSION['nombre'])) {
     </div>
 
     <div class="form-group col-lg-12 col-md-12 col-xs-12">
-      <button class="btn btn-primary" type="submit" id="btnGuardar_tarea"><i class="fa fa-save"></i>  Guardar (UI-only)</button>
+      <button class="btn btn-primary" type="submit" id="btnGuardar_tarea"><i class="fa fa-save"></i>  Guardar</button>
       <button class="btn btn-danger" onclick="window.location='escritorio.php'" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
     </div>
   </form>

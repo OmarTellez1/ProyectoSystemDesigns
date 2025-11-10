@@ -117,6 +117,7 @@
 
 
   <li><a href="escritorio.php"><i class="fa fa-dashboard"></i> <span>Escritorio</span></a></li>
+  <li><a href="mitareas.php"><i class="fa fa-tasks"></i> <span>Mis Tareas</span></a></li>
 
 
 
