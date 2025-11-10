@@ -3,7 +3,7 @@
      session_start();
  }
     ?>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -116,7 +116,7 @@
       <li class="header">MENÚ DE NAVEGACIÓN</li>
 
 
-      <li><a href="escritorio.php"><i class="fa  fa-dashboard (alias)"></i> <span>Escritorio</span></a></li>
+  <li><a href="escritorio.php"><i class="fa fa-dashboard"></i> <span>Escritorio</span></a></li>
 
 
 
@@ -125,6 +125,18 @@
 
 <?php if ($_SESSION['tipousuario'] == 'Administrador') {
     ?>
+      <li class="treeview">
+          <a href="#">
+            <i class="fa fa-tasks"></i> <span>Tareas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="tareas.php"><i class="fa fa-circle-o"></i> Crear Tareas</a></li>
+            <!--<li><a href="tareas_list.php"><i class="fa fa-circle-o"></i> Tareas Asignadas</a></li>-->
+          </ul>
+      </li>
       <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Acceso</span>
