@@ -118,20 +118,11 @@
 
       <li><a href="escritorio.php"><i class="fa  fa-dashboard (alias)"></i> <span>Escritorio</span></a></li>
 
-<!--
-      <li class="treeview">
-          <a href="#">
-            <i class="fa fa-envelope"></i> <span>Mensajes</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="mensaje.php"><i class="fa fa-circle-o"></i> Mensaje</a></li>
-          </ul>
-      </li>
 
--->
+
+
+
+
 <?php if ($_SESSION['tipousuario'] == 'Administrador') {
     ?>
       <li class="treeview">
@@ -160,7 +151,7 @@
           </ul>
       </li>
 
-          <!--<li class="treeview">
+          <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Asistencias</span>
             <span class="pull-right-container">
@@ -172,7 +163,7 @@
             <li><a href="rptasistencia.php"><i class="fa fa-circle-o"></i> Reportes</a></li> 
            
           </ul>
-      </li>-->
+      </li>
 <?php } ?>
 <?php if ($_SESSION['tipousuario'] != 'Administrador') {
     ?>
@@ -184,8 +175,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <!--<li><a href="asistenciau.php"><i class="fa fa-circle-o"></i> Asistencia</a></li>
-            <li><a href="rptasistenciau.php"><i class="fa fa-circle-o"></i> Reportes</a></li>-->
+            <li><a href="asistenciau.php"><i class="fa fa-circle-o"></i> Asistencia</a></li>
+            <li><a href="rptasistenciau.php"><i class="fa fa-circle-o"></i> Reportes</a></li>
            
           </ul>
       </li>
