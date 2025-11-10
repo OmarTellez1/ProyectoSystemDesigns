@@ -1,8 +1,8 @@
-<?php
-if (strlen(session_id()) < 1) {
-  session_start();
-}
-?>
+ <?php
+ if (strlen(session_id()) < 1) {
+     session_start();
+ }
+    ?>
 <!DOCTYPE html>
 <html>
 
@@ -114,51 +114,55 @@ if (strlen(session_id()) < 1) {
           <li class="header">MENÚ DE NAVEGACIÓN</li>
 
 
-          <li><a href="escritorio.php"><i class="fa  fa-dashboard (alias)"></i> <span>Escritorio</span></a></li>
+  <li><a href="escritorio.php"><i class="fa fa-dashboard"></i> <span>Escritorio</span></a></li>
+  <li><a href="mitareas.php"><i class="fa fa-tasks"></i> <span>Mis Tareas</span></a></li>
 
-          <!--
+
+
+
+
+
+<?php if ($_SESSION['tipousuario'] == 'Administrador') {
+    ?>
       <li class="treeview">
           <a href="#">
-            <i class="fa fa-envelope"></i> <span>Mensajes</span>
+            <i class="fa fa-tasks"></i> <span>Tareas</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="mensaje.php"><i class="fa fa-circle-o"></i> Mensaje</a></li>
+            <li><a href="tareas.php"><i class="fa fa-circle-o"></i> Crear Tareas</a></li>
+            <!--<li><a href="tareas_list.php"><i class="fa fa-circle-o"></i> Tareas Asignadas</a></li>-->
+          </ul>
+      </li>
+      <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Acceso</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+            <li><a href="tipousuario.php"><i class="fa fa-circle-o"></i> Tipo Usuario</a></li>
+            <!--<li><a href="departamento.php"><i class="fa fa-circle-o"></i> Departamento</a></li> -->
           </ul>
       </li>
 
--->
-          <?php if ($_SESSION['tipousuario'] == 'Administrador') {
-            ?>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                <li><a href="tipousuario.php"><i class="fa fa-circle-o"></i> Tipo Usuario</a></li>
-                <!--<li><a href="departamento.php"><i class="fa fa-circle-o"></i> Departamento</a></li> -->
-              </ul>
-            </li>
+      <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Departamento</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="departamento.php"><i class="fa fa-circle-o"></i> Departamento</a></li>            
+          </ul>
+      </li>
 
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Departamento</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="departamento.php"><i class="fa fa-circle-o"></i> Departamento</a></li>
-              </ul>
-            </li>
-
-            <!--<li class="treeview">
+          <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Asistencias</span>
             <span class="pull-right-container">
@@ -170,20 +174,24 @@ if (strlen(session_id()) < 1) {
             <li><a href="rptasistencia.php"><i class="fa fa-circle-o"></i> Reportes</a></li> 
            
           </ul>
-      </li>-->
-          <?php } ?>
-          <?php if ($_SESSION['tipousuario'] != 'Administrador') {
-            ?>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Mis Asistencias</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <!--<li><a href="asistenciau.php"><i class="fa fa-circle-o"></i> Asistencia</a></li>
-            <li><a href="rptasistenciau.php"><i class="fa fa-circle-o"></i> Reportes</a></li>-->
+      </li>
+<?php } ?>
+<?php if ($_SESSION['tipousuario'] != 'Administrador') {
+    ?>
+          <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Mis Asistencias</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="asistenciau.php"><i class="fa fa-circle-o"></i> Asistencia</a></li>
+            <li><a href="rptasistenciau.php"><i class="fa fa-circle-o"></i> Reportes</a></li>
+           
+          </ul>
+      </li>
+<?php } ?>
 
               </ul>
             </li>
