@@ -20,8 +20,8 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
-    <link rel="apple-touch-icon" href="../public/img/apple-touch-icon.png">
-    <link rel="shortcut icon" href="../public/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../public/apple-touch-icon.png">
+    <link rel="shortcut icon" href="../public/favicon.ico">
 
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">    
@@ -64,16 +64,16 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
 
-          <li class="dropdown user user-menu">
+          <!--<li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
             </a>
             <ul class="dropdown-menu">
-              <!-- User image -->
+               User image 
               <li class="user-header">
                 <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle" alt="User Image">
-
+-->
                 <p>
                   <?php echo $_SESSION['nombre'] . ' ' . $_SESSION['departamento']; ?>
                   <small>Desarrollo de sistemas informáticos</small>
