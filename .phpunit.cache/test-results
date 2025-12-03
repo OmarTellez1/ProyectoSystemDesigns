@@ -1,1 +1,0 @@
-{"version":2,"defects":{"UsuarioIntegracionTest::testLaBaseDeDatosRespondeYListaUsuarios":8},"times":{"UsuarioTest::testLaClaseUsuarioSePuedeInstanciar":0.003,"UsuarioTest::testAtributosDelModelo":0.001,"UsuarioIntegracionTest::testLaBaseDeDatosRespondeYListaUsuarios":0.011}}
