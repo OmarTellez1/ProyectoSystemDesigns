@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+
 require_once __DIR__ . '/../src/admin/modelos/Usuario.php';
 require_once __DIR__ . '/../src/admin/config/global.php';
 class UsuarioIntegracionTest extends TestCase
