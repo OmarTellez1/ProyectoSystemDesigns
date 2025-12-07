@@ -25,6 +25,7 @@
     "scripts": {
         "test-1": "phpunit tests/UsuarioTest.php",
         "test-2": "phpunit tests/UsuarioIntegracionTest.php",
-        "test-3": "phpunit tests/UsuarioLoginTest.php"
+        "test-3": "phpunit tests/UsuarioLoginTest.php",
+        "test-4": "phpunit tests/TipousuarioTest.php"
     }
 }
