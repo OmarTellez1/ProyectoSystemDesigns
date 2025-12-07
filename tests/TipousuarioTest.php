@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+
 require_once __DIR__ . '/../src/admin/modelos/Tipousuario.php';
 require_once __DIR__ . '/../src/admin/config/global.php';
 
