@@ -36,6 +36,7 @@ if (!isset($_SESSION['nombre'])) {
     </thead>
     <tbody>
     </tbody>
+    <!--
     <tfoot>
       <th>Opciones</th>
       <th>Código</th>
@@ -44,7 +45,7 @@ if (!isset($_SESSION['nombre'])) {
       <th>Fecha Hora</th>
       <th>Asistencia</th>
       <th>Fecha</th>
-    </tfoot>   
+    </tfoot>   -->
   </table>
 </div>
 

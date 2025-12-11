@@ -1,6 +1,6 @@
 <?php 
 //incluir la conexion de base de datos
-require "../admin/config/Conexion.php";
+require "../config/Conexion.php";
 class Asistencia{
 
 
@@ -49,3 +49,4 @@ public function listar(){
 }
 
  ?>
+

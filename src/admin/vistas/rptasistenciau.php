@@ -44,13 +44,13 @@ if (!isset($_SESSION['nombre'])) {
     </thead>
     <tbody> 
     </tbody>
-    <tfoot>
+    <!--<tfoot>
       <th>Fecha</th>
       <th>Nombres</th>
       <th>Asistencia</th>
       <th>Fecha/Hora</th>
       <th>Código</th>
-    </tfoot>   
+    </tfoot>   -->
   </table>
 </div>
 

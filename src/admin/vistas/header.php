@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../public/css/font-awesome.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
+    
+    <link rel="stylesheet" href="../public/css/blue.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
@@ -180,6 +182,19 @@
 <?php } ?>
 <?php if ($_SESSION['tipousuario'] != 'Administrador') {
     ?>
+          <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Marcación</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="marcacion.php"><i class="fa fa-circle-o"></i>Entrada/Salida</a></li>
+          </ul>
+      </li>
+
+
           <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Mis Asistencias</span>

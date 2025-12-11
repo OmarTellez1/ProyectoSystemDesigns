@@ -37,6 +37,7 @@ if (!isset($_SESSION['nombre'])) {
     </thead>
     <tbody>
     </tbody>
+    <!--
     <tfoot>
       <th>Opciones</th>
       <th>Nombre</th>
@@ -46,7 +47,7 @@ if (!isset($_SESSION['nombre'])) {
       <th>Foto</th>
       <th>Fecha/Registro</th>
       <th>Estado</th>
-    </tfoot>   
+    </tfoot>   -->
   </table>
 </div>
 <div class="panel-body" id="formularioregistros">

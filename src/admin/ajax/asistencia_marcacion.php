@@ -1,5 +1,5 @@
 <?php 
-require_once "../modelos/Asistencia.php";
+require_once "../modelos/asistencia_marcacion.php";
 
 $asistencia=new Asistencia();
 
