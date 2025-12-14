@@ -1,8 +1,9 @@
 /vendor/
-.env
-!.env.example
+.sql
 node_modules/
 .phpunit.result.cache
 .phpunit.cache/
 cypress/videos/
 cypress/screenshots/
+!.env.example
+.env
