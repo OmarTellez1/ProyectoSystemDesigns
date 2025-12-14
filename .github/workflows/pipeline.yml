@@ -24,7 +24,7 @@ jobs:
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -h localhost"
+          --health-cmd="mysqladmin ping -h 127.0.0.1"
           --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
@@ -35,10 +35,15 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.2"
-          extensions: mysqli
+          extensions: mysqli, pdo_mysql
 
       - name: Install Dependencies
         run: composer install
+
+      # ---- PASO NUEVO IMPORTANTE: Cargar la Base de Datos ----
+      # Esto es necesario para que tus tests de integración tengan tablas donde buscar
+      - name: Import Database Schema
+        run: mysql -h 127.0.0.1 -u root -proot control_asistencia < control_asistencia.sql
 
       # ---- PASO DE AUTO-FORMATEO ----
       - name: Auto-fix code style issues
@@ -50,11 +55,17 @@ jobs:
         with:
           commit_message: "Chore: Apply automated code style fixes"
 
-      # ---- PASOS DE VERIFICACIÓN sss ----
+      # ---- PASOS DE VERIFICACIÓN ----
       - name: Run Linter (PHP Code Sniffer)
         run: vendor/bin/phpcs
 
       - name: Run Unit Tests (PHPUnit)
+        # Forzamos las variables de entorno AQUÍ para que ignore el phpunit.xml local
+        env:
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          DB_PASSWORD: root
+          DB_NAME: control_asistencia
         run: vendor/bin/phpunit
 
   deploy:
