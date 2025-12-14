@@ -1,7 +1,12 @@
 <?php
-
 session_start();
+
+// 1. Incluimos los modelos y la configuración de Cloudinary
 require_once "../modelos/Usuario.php";
+require_once "../config/cloudinary.php"; // Cargamos tus credenciales
+
+// Importamos la clase de Cloudinary para subir archivos
+use Cloudinary\Api\Upload\UploadApi;
 
 $usuario = new Usuario();
 
@@ -23,13 +28,31 @@ $idmensaje = isset($_POST["idmensaje"]) ? limpiarCadena($_POST["idmensaje"]) : "
 
 switch ($_GET["op"]) {
     case 'guardaryeditar':
+        // Lógica de Subida de Imagen a Cloudinary
         if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])) {
             $imagen = $_POST["imagenactual"];
         } else {
-            $ext = explode(".", $_FILES["imagen"]["name"]);
-            if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png") {
-                $imagen = round(microtime(true)) . '.' . end($ext);
-                move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
+            // Validamos que sea una imagen
+            $type = $_FILES['imagen']['type'];
+            if ($type == "image/jpg" || $type == "image/jpeg" || $type == "image/png") {
+                try {
+                    // SUBIDA A CLOUDINARY
+                    // Tomamos el archivo temporal
+                    $archivo_temporal = $_FILES["imagen"]["tmp_name"];
+
+                    // Lo subimos a la nube
+                    $resultado = (new UploadApi())->upload($archivo_temporal, [
+                        'folder' => 'usuarios_sistema' // Carpeta dentro de Cloudinary (opcional)
+                    ]);
+
+                    // Guardamos la URL segura (https) en la variable $imagen
+                    $imagen = $resultado['secure_url'];
+
+                } catch (Exception $e) {
+                    // Si falla la subida a la nube, podrías manejar el error aquí
+                    // Por ahora dejaremos que siga el flujo, pero la imagen quedará vacía o con error
+                    $imagen = "";
+                }
             }
         }
 
@@ -64,7 +87,6 @@ switch ($_GET["op"]) {
 
     case 'editar_clave':
         $clavehash = hash("SHA256", $clavec);
-
         $rspta = $usuario->editar_clave($idusuarioc, $clavehash);
         echo $rspta ? "Password actualizado correctamente" : "No se pudo actualizar el password";
         break;
@@ -76,66 +98,73 @@ switch ($_GET["op"]) {
 
     case 'listar':
         $rspta = $usuario->listar();
-        //declaramos un array
         $data = array();
 
-
         while ($reg = $rspta->fetch_object()) {
+
+            // LOGICA HIBRIDA PARA MOSTRAR IMAGENES
+            // Si la imagen contiene "http", es de Cloudinary. Si no, es local antigua.
+            $imgSrc = "";
+            if (empty($reg->imagen)) {
+                $imgSrc = "../files/usuarios/default.jpg"; // Imagen por defecto si no tiene
+            } elseif (strpos($reg->imagen, 'http') !== false) {
+                // Es una URL de Cloudinary
+                $imgSrc = $reg->imagen;
+            } else {
+                // Es un archivo local viejo
+                $imgSrc = "../files/usuarios/" . $reg->imagen;
+            }
+
             $data[] = array(
-                "0" => ($reg->estado) ? '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idusuario . ')"><i class="fa fa-pencil"></i></button>' . ' ' . '<button class="btn btn-info btn-xs" onclick="mostrar_clave(' . $reg->idusuario . ')"><i class="fa fa-key"></i></button>' . ' ' . '<button class="btn btn-danger btn-xs" onclick="desactivar(' . $reg->idusuario . ')"><i class="fa fa-close"></i></button>' : '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idusuario . ')"><i class="fa fa-pencil"></i></button>' . ' ' . '<button class="btn btn-info btn-xs" onclick="mostrar_clave(' . $reg->idusuario . ')"><i class="fa fa-key"></i></button>' . ' ' . '<button class="btn btn-primary btn-xs" onclick="activar(' . $reg->idusuario . ')"><i class="fa fa-check"></i></button>',
+                "0" => ($reg->estado) ?
+                    '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idusuario . ')"><i class="fa fa-pencil"></i></button>' . ' ' . '<button class="btn btn-info btn-xs" onclick="mostrar_clave(' . $reg->idusuario . ')"><i class="fa fa-key"></i></button>' . ' ' . '<button class="btn btn-danger btn-xs" onclick="desactivar(' . $reg->idusuario . ')"><i class="fa fa-close"></i></button>' :
+                    '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idusuario . ')"><i class="fa fa-pencil"></i></button>' . ' ' . '<button class="btn btn-info btn-xs" onclick="mostrar_clave(' . $reg->idusuario . ')"><i class="fa fa-key"></i></button>' . ' ' . '<button class="btn btn-primary btn-xs" onclick="activar(' . $reg->idusuario . ')"><i class="fa fa-check"></i></button>',
                 "1" => $reg->nombre,
                 "2" => $reg->apellidos,
                 "3" => $reg->login,
                 "4" => $reg->email,
-                "5" => "<img src='../files/usuarios/" . $reg->imagen . "' height='50px' width='50px'>",
+                // AQUI USAMOS LA NUEVA VARIABLE $imgSrc
+                "5" => "<img src='" . $imgSrc . "' height='50px' width='50px'>",
                 "6" => $reg->fechacreado,
                 "7" => ($reg->estado) ? '<span class="label bg-green">Activado</span>' : '<span class="label bg-red">Desactivado</span>'
             );
         }
 
         $results = array(
-            "sEcho" => 1,//info para datatables
-            "iTotalRecords" => count($data),//enviamos el total de registros al datatable
-            "iTotalDisplayRecords" => count($data),//enviamos el total de registros a visualizar
+            "sEcho" => 1,
+            "iTotalRecords" => count($data),
+            "iTotalDisplayRecords" => count($data),
             "aaData" => $data
         );
         echo json_encode($results);
-
         break;
 
 
     case 'verificar':
-        //validar si el usuario tiene acceso al sistema
         $logina = $_POST['logina'];
         $clavea = $_POST['clavea'];
-
-        //Hash SHA256 en la contraseña
         $clavehash = hash("SHA256", $clavea);
-
         $rspta = $usuario->verificar($logina, $clavehash);
-
         $fetch = $rspta->fetch_object();
 
         if (isset($fetch)) {
-            # Declaramos la variables de sesion
             $_SESSION['idusuario'] = $fetch->idusuario;
             $id = $fetch->idusuario;
             $_SESSION['nombre'] = $fetch->nombre;
             $_SESSION['codigo_persona'] = $fetch->codigo_persona;
+
+            // IMPORTANTE: La imagen en sesión ahora podría ser una URL completa
             $_SESSION['imagen'] = $fetch->imagen;
+
             $_SESSION['login'] = $fetch->login;
             $_SESSION['tipousuario'] = $fetch->tipousuario;
             $_SESSION['departamento'] = $fetch->iddepartamento;
 
             require "../config/Conexion.php";
-
             $sql = "UPDATE usuarios SET iteracion='1' WHERE idusuario='$id'";
-            echo $sql;
             ejecutarConsulta($sql);
         }
-
         echo json_encode($fetch);
-
         break;
 
     case 'salir':
@@ -143,22 +172,14 @@ switch ($_GET["op"]) {
         if (isset($_SESSION['idusuario'])) {
             $id = $_SESSION['idusuario'];
             $sql = "UPDATE usuarios SET iteracion='0' WHERE idusuario='$id'";
-
             ejecutarConsulta($sql);
         }
-
-
-        //Limpiamos las variables de sesión
         session_unset();
-        //Destruìmos la sesión
         session_destroy();
-        //Redireccionamos al login
         header("Location: ../index.php");
-
         break;
 
     case 'selectUsuarios':
-        // Retornar usuarios activos con info básica para selects (JSON)
         require "../config/Conexion.php";
         $sql = "SELECT idusuario, nombre, apellidos, iddepartamento FROM usuarios WHERE estado='1'";
         $rspta = ejecutarConsulta($sql);
@@ -174,3 +195,4 @@ switch ($_GET["op"]) {
         echo json_encode($usuarios);
         break;
 }
+?>
