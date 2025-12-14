@@ -2,6 +2,21 @@
 if (strlen(session_id()) < 1) {
   session_start();
 }
+
+// --- CORRECCIÓN PARA CLOUDINARY ---
+// Obtenemos la imagen de la sesión
+$imgRaw = $_SESSION['imagen'];
+$srcImagen = "";
+
+// Verificamos si es una URL de internet (Cloudinary) o un archivo local
+if (strpos($imgRaw, 'http') === false) {
+  // No tiene http, asumimos que es local
+  $srcImagen = "../files/usuarios/" . $imgRaw;
+} else {
+  // Si tiene http, es de Cloudinary, usamos el link directo
+  $srcImagen = $imgRaw;
+}
+// ----------------------------------
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,21 +25,14 @@ if (strlen(session_id()) < 1) {
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Primero Tu</title>
-  <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3 -->
   <link rel="stylesheet" href="../public/css/bootstrap.min.css">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="../public/css/font-awesome.css">
-  <!-- Theme style -->
   <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../public/css/_all-skins.min.css">
   <link rel="apple-touch-icon" href="../public/img/apple-touch-icon.png">
   <link rel="shortcut icon" href="../public/img/favicon.ico">
 
-  <!-- DATATABLES -->
   <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
   <link href="../public/datatables/buttons.dataTables.min.css" rel="stylesheet" />
   <link href="../public/datatables/responsive.dataTables.min.css" rel="stylesheet" />
@@ -34,10 +42,8 @@ if (strlen(session_id()) < 1) {
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-  <!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>
 
-  <!-- Your customer chat code -->
   <div class="fb-customerchat" attribution=setup_tool page_id="280144326139427" theme_color="#0084ff"
     logged_in_greeting="Hola! deseas compartir algún sistema o descargar ?"
     logged_out_greeting="Hola! deseas compartir algún sistema o descargar ?">
@@ -45,16 +51,11 @@ if (strlen(session_id()) < 1) {
   <div class="wrapper">
 
     <header class="main-header">
-      <!-- Logo -->
       <a href="escritorio.php" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>primero</b> Tu</span>
-        <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>Primero</b> Tu</span>
       </a>
-      <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
           <span class="sr-only">Navegación</span>
         </a>
@@ -64,20 +65,18 @@ if (strlen(session_id()) < 1) {
 
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="user-image" alt="User Image">
+                <img src="<?php echo $srcImagen; ?>" class="user-image" alt="User Image">
                 <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
               </a>
               <ul class="dropdown-menu">
-                <!-- User image -->
                 <li class="user-header">
-                  <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle" alt="User Image">
+                  <img src="<?php echo $srcImagen; ?>" class="img-circle" alt="User Image">
 
                   <p>
                     <?php echo $_SESSION['nombre'] . ' ' . $_SESSION['departamento']; ?>
                     <small>Desarrollo de sistemas informáticos</small>
                   </p>
                 </li>
-                <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
                     <a href="#" class="btn btn-default btn-flat">Perfil</a>
@@ -88,28 +87,21 @@ if (strlen(session_id()) < 1) {
                 </li>
               </ul>
             </li>
-            <!-- Control Sidebar Toggle Button -->
-
           </ul>
         </div>
       </nav>
     </header>
-    <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
-        <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle"
-              style="width: 50px; height: 50px;" alt="User Image">
+            <img src="<?php echo $srcImagen; ?>" class="img-circle" style="width: 50px; height: 50px;" alt="User Image">
           </div>
           <div class="pull-left info">
             <p><?php echo $_SESSION['nombre']; ?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
-        <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu tree" data-widget="tree">
           <li class="header">MENÚ DE NAVEGACIÓN</li>
 
@@ -133,7 +125,6 @@ if (strlen(session_id()) < 1) {
               </a>
               <ul class="treeview-menu">
                 <li><a href="tareas.php"><i class="fa fa-circle-o"></i> Crear Tareas</a></li>
-                <!--<li><a href="tareas_list.php"><i class="fa fa-circle-o"></i> Tareas Asignadas</a></li>-->
               </ul>
             </li>
             <li class="treeview">
@@ -146,7 +137,6 @@ if (strlen(session_id()) < 1) {
               <ul class="treeview-menu">
                 <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                 <li><a href="tipousuario.php"><i class="fa fa-circle-o"></i> Tipo Usuario</a></li>
-                <!--<li><a href="departamento.php"><i class="fa fa-circle-o"></i> Departamento</a></li> -->
               </ul>
             </li>
 
@@ -199,5 +189,4 @@ if (strlen(session_id()) < 1) {
 
         </ul>
       </section>
-      <!-- /.sidebar -->
     </aside>
