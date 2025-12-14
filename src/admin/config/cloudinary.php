@@ -1,4 +1,5 @@
 <?php
+
 // src/admin/config/cloudinary.php
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
@@ -26,4 +27,3 @@ Configuration::instance([
         'secure' => true
     ]
 ]);
-?>
