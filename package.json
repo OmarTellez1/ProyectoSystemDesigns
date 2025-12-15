@@ -1,0 +1,28 @@
+{
+  "name": "proyectosystemdesigns",
+  "version": "1.0.0",
+  "description": "Aplicación web para registrar entradas y salidas del personal, generar reportes en PDF y gestionar usuarios y roles.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmarTellez1/ProyectoSystemDesigns.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/OmarTellez1/ProyectoSystemDesigns/issues"
+  },
+  "homepage": "https://github.com/OmarTellez1/ProyectoSystemDesigns#readme",
+  "devDependencies": {
+    "cypress": "^15.7.1"
+  }
+}

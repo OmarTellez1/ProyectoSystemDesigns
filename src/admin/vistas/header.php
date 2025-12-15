@@ -3,14 +3,14 @@ if (strlen(session_id()) < 1) {
   session_start();
 }
 
-// --- INTEGRACIÓN CLOUDINARY (Lógica inteligente) ---
+// --- CORRECCIÓN PARA CLOUDINARY ---
 // Obtenemos la imagen de la sesión
-$imgRaw = isset($_SESSION['imagen']) ? $_SESSION['imagen'] : 'default.jpg';
+$imgRaw = $_SESSION['imagen'];
 $srcImagen = "";
 
 // Verificamos si es una URL de internet (Cloudinary) o un archivo local
 if (strpos($imgRaw, 'http') === false) {
-  // No tiene http, asumimos que es local (Legacy)
+  // No tiene http, asumimos que es local
   $srcImagen = "../files/usuarios/" . $imgRaw;
 } else {
   // Si tiene http, es de Cloudinary, usamos el link directo
@@ -107,10 +107,14 @@ if (strpos($imgRaw, 'http') === false) {
       <ul class="sidebar-menu tree" data-widget="tree">
         <li class="header">MENÚ DE NAVEGACIÓN</li>
 
+  <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
+  <link href="../public/datatables/buttons.dataTables.min.css" rel="stylesheet" />
+  <link href="../public/datatables/responsive.dataTables.min.css" rel="stylesheet" />
 
         <li><a href="escritorio.php"><i class="fa fa-dashboard"></i> <span>Escritorio</span></a></li>
         <li><a href="mitareas.php"><i class="fa fa-tasks"></i> <span>Mis Tareas</span></a></li>
 
+</head>
 
 
 

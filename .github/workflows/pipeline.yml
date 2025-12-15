@@ -3,10 +3,10 @@ name: PHP CI Pipeline
 on:
   push:
     branches:
-      - desarrollo # O la rama que estés usando, ej: backend
+      - main
   pull_request:
     branches:
-      - desarrollo
+      - main
 
 permissions:
   contents: write # Esencial para que el bot pueda hacer commit
@@ -24,7 +24,7 @@ jobs:
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -h localhost"
+          --health-cmd="mysqladmin ping -h 127.0.0.1"
           --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
@@ -35,15 +35,20 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.2"
-          extensions: mysqli
+          extensions: mysqli, pdo_mysql
 
       - name: Install Dependencies
         run: composer install
 
+      # ---- PASO NUEVO IMPORTANTE: Cargar la Base de Datos ----
+      # Esto es necesario para que tus tests de integración tengan tablas donde buscar
+      - name: Import Database Schema
+        run: mysql -h 127.0.0.1 -u root -proot control_asistencia < control_asistencia.sql
+
       # ---- PASO DE AUTO-FORMATEO ----
       - name: Auto-fix code style issues
         run: vendor/bin/phpcbf
-        continue-on-error: true # Continúa incluso si no puede arreglar todo
+        continue-on-error: true
 
       - name: Commit automatically fixed code
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -55,4 +60,45 @@ jobs:
         run: vendor/bin/phpcs
 
       - name: Run Unit Tests (PHPUnit)
+        # Forzamos las variables de entorno AQUÍ para que ignore el phpunit.xml local
+        env:
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          DB_PASSWORD: root
+          DB_NAME: control_asistencia
         run: vendor/bin/phpunit
+
+  deploy:
+    runs-on: ubuntu-latest
+    # Se ejecuta solo si el job 'build' fue exitoso
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+        # Añadimos un paso para instalar la Heroku CLI manualmente
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+
+      - name: Deploy to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+        run: |
+          # 1. Crea el archivo .netrc para la autenticación de Git
+          cat > ~/.netrc << EOF
+          machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+
+          # 2. Añade el repositorio de Heroku como un "remoto" de Git
+          heroku git:remote -a $HEROKU_APP_NAME
+
+          # 3. Sube el código de la rama actual a la rama 'main' de Heroku
+          git push heroku HEAD:main --force

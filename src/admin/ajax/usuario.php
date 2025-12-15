@@ -106,7 +106,7 @@ switch ($_GET["op"]) {
             // Si la imagen contiene "http", es de Cloudinary. Si no, es local antigua.
             $imgSrc = "";
             if (empty($reg->imagen)) {
-                $imgSrc = "https://res.cloudinary.com/dyetttues/image/upload/v12345/default_avatar.jpg"; // Imagen por defecto si no tiene
+                $imgSrc = "https://res.cloudinary.com/dyetttues/image/upload/v1765690661/default_r0qfcl.jpg"; // Imagen por defecto si no tiene
             } elseif (strpos($reg->imagen, 'http') !== false) {
                 // Es una URL de Cloudinary
                 $imgSrc = $reg->imagen;

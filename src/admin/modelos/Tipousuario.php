@@ -1,7 +1,7 @@
 <?php
 
 //incluir la conexion de base de datos
-require "../config/Conexion.php";
+require_once __DIR__ . '/../config/Conexion.php';
 class Tipousuario
 {
     //implementamos nuestro constructor
@@ -9,7 +9,7 @@ class Tipousuario
     {
     }
 
-//metodo insertar regiustro
+    //metodo insertar regiustro
     public function insertar($nombre, $descripcion, $idusuario)
     {
         date_default_timezone_set('America/Mexico_City');
@@ -35,20 +35,20 @@ class Tipousuario
         return ejecutarConsulta($sql);
     }
 
-//metodo para mostrar registros
+    //metodo para mostrar registros
     public function mostrar($idtipousuario)
     {
         $sql = "SELECT * FROM tipousuario WHERE idtipousuario='$idtipousuario'";
         return ejecutarConsultaSimpleFila($sql);
     }
 
-//listar registros
+    //listar registros
     public function listar()
     {
         $sql = "SELECT * FROM tipousuario";
         return ejecutarConsulta($sql);
     }
-//listar y mostrar en selct
+    //listar y mostrar en selct
     public function select()
     {
         $sql = "SELECT * FROM tipousuario";
