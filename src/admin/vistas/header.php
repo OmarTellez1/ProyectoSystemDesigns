@@ -84,7 +84,7 @@ if (strpos($imgRaw, 'http') === false) {
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../../admin" class="btn btn-default btn-flat">Salir</a>
+                  <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -107,14 +107,14 @@ if (strpos($imgRaw, 'http') === false) {
       <ul class="sidebar-menu tree" data-widget="tree">
         <li class="header">MENÚ DE NAVEGACIÓN</li>
 
-  <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
-  <link href="../public/datatables/buttons.dataTables.min.css" rel="stylesheet" />
-  <link href="../public/datatables/responsive.dataTables.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
+        <link href="../public/datatables/buttons.dataTables.min.css" rel="stylesheet" />
+        <link href="../public/datatables/responsive.dataTables.min.css" rel="stylesheet" />
 
         <li><a href="escritorio.php"><i class="fa fa-dashboard"></i> <span>Escritorio</span></a></li>
         <li><a href="mitareas.php"><i class="fa fa-tasks"></i> <span>Mis Tareas</span></a></li>
 
-</head>
+        </head>
 
 
 
