@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 // 1. Incluimos los modelos y la configuración de Cloudinary
@@ -48,6 +47,7 @@ switch ($_GET["op"]) {
 
                     // Guardamos la URL segura (https) en la variable $imagen
                     $imagen = $resultado['secure_url'];
+
                 } catch (Exception $e) {
                     // Si falla la subida a la nube, podrías manejar el error aquí
                     // Por ahora dejaremos que siga el flujo, pero la imagen quedará vacía o con error
@@ -101,6 +101,7 @@ switch ($_GET["op"]) {
         $data = array();
 
         while ($reg = $rspta->fetch_object()) {
+
             // LOGICA HIBRIDA PARA MOSTRAR IMAGENES
             // Si la imagen contiene "http", es de Cloudinary. Si no, es local antigua.
             $imgSrc = "";
@@ -194,3 +195,4 @@ switch ($_GET["op"]) {
         echo json_encode($usuarios);
         break;
 }
+?>

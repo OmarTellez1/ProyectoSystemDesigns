@@ -1,0 +1,188 @@
+/* Estilos para la página de marcación - HEADER SEPARADO */
+body {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block; /* Cambiado de flex a block */
+    padding-top: 0; /* Eliminado padding-top */
+}
+
+
+/* LIMPIAR EL CUADRO PRINCIPAL */
+.lockscreen-wrapper {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    max-width: 420px;
+    margin: 80px auto 20px auto; /* Margen superior para separar del header */
+    position: relative;
+    z-index: 1;
+}
+
+/* Si hay sidebar, ocultarlo */
+.wrapper,
+.content-wrapper {
+    background: white !important;
+    margin-left: 0 !important;
+}
+
+/* ESTILOS ESPECÍFICOS PARA EL CUADRO (limpio) */
+#movimientos {
+    margin-bottom: 15px;
+}
+
+.alert-primary {
+    background-color: #e8f4fc;
+    border-color: #b3e0ff;
+    color: #0066cc;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-primary h5 {
+    margin: 0 0 5px 0;
+    font-size: 15px;
+}
+
+.lockscreen-logo {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.lockscreen-logo h3 {
+    color: #2c3e50 !important;
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.lockscreen-logo p {
+    color: #7f8c8d;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.lockscreen-name {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.lockscreen-item {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    margin-bottom: 15px;
+}
+
+.lockscreen-image {
+    text-align: center;
+}
+
+.lockscreen-image img {
+    width: 70px !important;
+    height: 70px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #3498db;
+}
+
+/* INPUT Y BOTÓN EN MISMA LÍNEA */
+.input-group {
+    display: flex;
+    width: 100%;
+}
+
+#codigo_persona {
+    flex: 1;
+    height: 42px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+    padding: 0 15px;
+}
+
+#btnGuardar {
+    height: 42px;
+    width: 50px;
+    background-color: #3498db;
+    border-color: #2980b9;
+    border-radius: 0 4px 4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group-append {
+    margin-left: 0;
+}
+
+/* MENSAJES */
+.text-center.mt-4 {
+    margin-top: 15px !important;
+}
+
+.text-center.mt-4 small {
+    font-size: 12px;
+    color: #666;
+}
+
+.text-center.mt-3 {
+    margin-top: 10px !important;
+}
+
+#fecha-hora {
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .lockscreen-wrapper {
+        margin: 60px auto 20px auto;
+        padding: 20px;
+        max-width: 90%;
+    }
+    
+    header,
+    .main-header {
+        height: 50px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lockscreen-wrapper {
+        margin: 50px auto 15px auto;
+        padding: 15px;
+    }
+    
+    .lockscreen-image img {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    #codigo_persona {
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    #btnGuardar {
+        height: 40px;
+        width: 45px;
+    }
+}
