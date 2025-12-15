@@ -1,7 +1,4 @@
 <footer class="main-footer">
-  <div>
-    <b>Proyecto realizado por: </b> Omar Téllez, Julio Astudillo, Kevin Valverde, Christopher Granja
-  </div>
 </footer>
 
 <!-- jQuery 3 -->
