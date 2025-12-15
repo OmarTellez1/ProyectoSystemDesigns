@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - desarrollo
   pull_request:
     branches:
       - main
+      - desarrollo
 
 permissions:
   contents: write # Esencial para que el bot pueda hacer commit
@@ -70,8 +72,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    # Se ejecuta solo si el job 'build' fue exitoso
     needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/css/blue.css">
-    <link rel="shortcut icon" href="../public/img/favicon.ico">
+    <link rel="shortcut icon" href="../public/favicon.ico">
 
   </head>
   <body class="hold-transition login-page">
