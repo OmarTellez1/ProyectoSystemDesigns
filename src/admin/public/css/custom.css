@@ -1,0 +1,107 @@
+/* PAGINA DE LOGIN */
+.login-box-body {
+    background-color: #004643 !important;
+    color: #fffffe !important;
+}
+
+.login-page{
+    background: #fffffe;
+}
+
+.btn-primary{
+    background-color: #f9bc60;
+    border-color: #f9bc60;
+    color:#001e1d
+}
+/* PAGINA DE LOGIN */
+
+/* MENU PRINCIPAL */
+
+.content-wrapper {
+    background-color: #fffffe !important; 
+}
+
+/* Cambiar la barra de arriba */
+.skin-blue .main-header .navbar {
+    background-color: #004643 !important;
+}
+
+/* Cambiar la parte del Logo */
+.skin-blue .main-header .logo {
+    background-color: #004643 !important; 
+}
+
+/* Cambiar la barra lateral izquierda */
+.skin-blue .main-sidebar, 
+.skin-blue .left-side {
+    background-color: #004643 !important;
+    color:#fff
+}
+
+.bg-green{
+    background-color: #e16162 !important;
+    
+}
+
+.bg-orange{
+    background-color: #f9bc60 !important;
+    
+}
+
+.bg-aqua{
+    background-color: #abd1c6 !important;
+    
+}
+
+.btn-danger{
+    background-color: #f9bc60;
+    border-color: #fffffe;
+    color:#001e1d
+}
+
+/* Color al pasar el mouse por encima (HOVER) en el menú lateral */
+.skin-blue .sidebar-menu > li:hover > a,
+.skin-blue .sidebar-menu > li.active > a {
+    /* Fondo del botón al pasar el mouse */
+    background-color: #fffffe !important;
+    
+    /* Color del texto e iconos al pasar el mouse */
+    color: #004643 !important; 
+    
+    /* (Opcional) La pequeña línea vertical a la izquierda */
+    border-left-color: #f9bc60 !important; 
+    
+}
+
+/* --- SUB-MENÚS (Pestañas desplegables) --- */
+
+/* Cambiar el color al pasar el mouse (HOVER) en las opciones internas */
+.skin-blue .sidebar-menu .treeview-menu > li > a:hover {
+    background-color: #004643 !important; /* Tu verde */
+    color: #ffffff !important;
+}
+
+/* Cambiar el color si la opción interna está seleccionada (ACTIVE) */
+.skin-blue .sidebar-menu .treeview-menu > li.active > a {
+    background-color: #004643 !important;
+    color: #ffffff !important;
+}
+
+
+.skin-blue .sidebar-menu .treeview-menu {
+    background-color: #003633 !important;
+}
+
+/* MENU PRINCIPAL */
+
+/* --- BOTONES --- */
+
+/* Cambiar el color del botón azul "Guardar" al pasar el mouse (hover), 
+   al hacer clic (active) y al seleccionarlo (focus) */
+.btn-primary:hover, 
+.btn-primary:active, 
+.btn-primary:focus {
+    background-color: #13cb03 !important; /* Un verde más oscuro para el efecto */
+    border-color: #13cb03 !important;      /* El borde del mismo color */
+    
+}

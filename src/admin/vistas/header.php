@@ -29,6 +29,8 @@ if (strpos($imgRaw, 'http') === false) {
   <link rel="stylesheet" href="../public/css/bootstrap.min.css">
   <link rel="stylesheet" href="../public/css/font-awesome.css">
   <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
+  
+  <link rel="stylesheet" href="../public/css/custom.css">
 
   <link rel="stylesheet" href="../public/css/blue.css">
   <link rel="stylesheet" href="../public/css/_all-skins.min.css">

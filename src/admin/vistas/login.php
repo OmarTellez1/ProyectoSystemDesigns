@@ -13,6 +13,8 @@
    
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
+
+    <link rel="stylesheet" href="../public/css/custom.css?v=2">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/css/blue.css">
     <link rel="shortcut icon" href="../public/favicon.ico">
